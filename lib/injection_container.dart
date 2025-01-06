@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:luccy_onboarding/dio_config/dio_client.dart';
+import 'package:luccy_onboarding/features/media/data/video_call_services.dart';
 import 'package:luccy_onboarding/features/users/data/datasource/user_remote_datasource.dart';
 import 'package:luccy_onboarding/features/users/data/repositories/user_repository_impl.dart';
 import 'package:luccy_onboarding/features/users/domain/repositories/user_repository.dart';
@@ -10,6 +11,8 @@ import 'package:luccy_onboarding/features/users/presentation/bloc/user_bloc.dart
 final sl = GetIt.instance;
 
 Future<void> init() async {
+  final client = VideoCallServices.getVideoClient();
+
   // user bloc
   sl
     ..registerFactory(() => UserBloc(getUsersUsecase: sl()))

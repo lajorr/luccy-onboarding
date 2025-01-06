@@ -26,9 +26,9 @@ class UserNameAddress extends StatelessWidget {
     final nameSplit = name.split(' ');
     final shortName = '${nameSplit.first} ${nameSplit.last[0]}.';
     return Container(
-      height: MediaQuery.of(context).size.height * 0.24,
+      // height: MediaQuery.of(context).size.height * 0.24,
       width: double.infinity,
-      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.28),
+      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.24),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(

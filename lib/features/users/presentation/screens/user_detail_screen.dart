@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luccy_onboarding/contants/color_constants.dart';
@@ -24,23 +26,23 @@ class UserDetailScreen extends StatelessWidget {
                   ),
                   fit: BoxFit.cover),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: const Icon(Icons.arrow_back),
-                )
-              ],
-            ),
           ),
           SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              padding: EdgeInsets.only(
+                  right: 16.w,
+                  left: 16.w,
+                  top: MediaQuery.of(context).padding.top),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  IconButton(
+                    onPressed: () {
+                      log("bakckkk");
+                      Navigator.of(context).pop();
+                    },
+                    icon: const Icon(Icons.arrow_back),
+                  ),
                   UserNameAddress(
                     city: user.address.city,
                     imgUrl: user.imgUrl,
