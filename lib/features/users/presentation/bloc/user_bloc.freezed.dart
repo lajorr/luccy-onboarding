@@ -19,32 +19,38 @@ mixin _$UserEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getUsersData,
+    required TResult Function(String query) searchUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getUsersData,
+    TResult? Function(String query)? searchUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getUsersData,
+    TResult Function(String query)? searchUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetUsersDataEvent value) getUsersData,
+    required TResult Function(SearchUserEvent value) searchUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetUsersDataEvent value)? getUsersData,
+    TResult? Function(SearchUserEvent value)? searchUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetUsersDataEvent value)? getUsersData,
+    TResult Function(SearchUserEvent value)? searchUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -91,12 +97,20 @@ class __$$GetUsersDataEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetUsersDataEventImpl implements GetUsersDataEvent {
+class _$GetUsersDataEventImpl
+    with DiagnosticableTreeMixin
+    implements GetUsersDataEvent {
   const _$GetUsersDataEventImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'UserEvent.getUsersData()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'UserEvent.getUsersData'));
   }
 
   @override
@@ -112,6 +126,7 @@ class _$GetUsersDataEventImpl implements GetUsersDataEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getUsersData,
+    required TResult Function(String query) searchUser,
   }) {
     return getUsersData();
   }
@@ -120,6 +135,7 @@ class _$GetUsersDataEventImpl implements GetUsersDataEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getUsersData,
+    TResult? Function(String query)? searchUser,
   }) {
     return getUsersData?.call();
   }
@@ -128,6 +144,7 @@ class _$GetUsersDataEventImpl implements GetUsersDataEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getUsersData,
+    TResult Function(String query)? searchUser,
     required TResult orElse(),
   }) {
     if (getUsersData != null) {
@@ -140,6 +157,7 @@ class _$GetUsersDataEventImpl implements GetUsersDataEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetUsersDataEvent value) getUsersData,
+    required TResult Function(SearchUserEvent value) searchUser,
   }) {
     return getUsersData(this);
   }
@@ -148,6 +166,7 @@ class _$GetUsersDataEventImpl implements GetUsersDataEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetUsersDataEvent value)? getUsersData,
+    TResult? Function(SearchUserEvent value)? searchUser,
   }) {
     return getUsersData?.call(this);
   }
@@ -156,6 +175,7 @@ class _$GetUsersDataEventImpl implements GetUsersDataEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetUsersDataEvent value)? getUsersData,
+    TResult Function(SearchUserEvent value)? searchUser,
     required TResult orElse(),
   }) {
     if (getUsersData != null) {
@@ -167,6 +187,157 @@ class _$GetUsersDataEventImpl implements GetUsersDataEvent {
 
 abstract class GetUsersDataEvent implements UserEvent {
   const factory GetUsersDataEvent() = _$GetUsersDataEventImpl;
+}
+
+/// @nodoc
+abstract class _$$SearchUserEventImplCopyWith<$Res> {
+  factory _$$SearchUserEventImplCopyWith(_$SearchUserEventImpl value,
+          $Res Function(_$SearchUserEventImpl) then) =
+      __$$SearchUserEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$SearchUserEventImplCopyWithImpl<$Res>
+    extends _$UserEventCopyWithImpl<$Res, _$SearchUserEventImpl>
+    implements _$$SearchUserEventImplCopyWith<$Res> {
+  __$$SearchUserEventImplCopyWithImpl(
+      _$SearchUserEventImpl _value, $Res Function(_$SearchUserEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$SearchUserEventImpl(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchUserEventImpl
+    with DiagnosticableTreeMixin
+    implements SearchUserEvent {
+  const _$SearchUserEventImpl(this.query);
+
+  @override
+  final String query;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'UserEvent.searchUser(query: $query)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'UserEvent.searchUser'))
+      ..add(DiagnosticsProperty('query', query));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchUserEventImpl &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchUserEventImplCopyWith<_$SearchUserEventImpl> get copyWith =>
+      __$$SearchUserEventImplCopyWithImpl<_$SearchUserEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getUsersData,
+    required TResult Function(String query) searchUser,
+  }) {
+    return searchUser(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getUsersData,
+    TResult? Function(String query)? searchUser,
+  }) {
+    return searchUser?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getUsersData,
+    TResult Function(String query)? searchUser,
+    required TResult orElse(),
+  }) {
+    if (searchUser != null) {
+      return searchUser(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetUsersDataEvent value) getUsersData,
+    required TResult Function(SearchUserEvent value) searchUser,
+  }) {
+    return searchUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetUsersDataEvent value)? getUsersData,
+    TResult? Function(SearchUserEvent value)? searchUser,
+  }) {
+    return searchUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetUsersDataEvent value)? getUsersData,
+    TResult Function(SearchUserEvent value)? searchUser,
+    required TResult orElse(),
+  }) {
+    if (searchUser != null) {
+      return searchUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchUserEvent implements UserEvent {
+  const factory SearchUserEvent(final String query) = _$SearchUserEventImpl;
+
+  String get query;
+
+  /// Create a copy of UserEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchUserEventImplCopyWith<_$SearchUserEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -264,12 +435,18 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements Initial {
+class _$InitialImpl with DiagnosticableTreeMixin implements Initial {
   const _$InitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'UserState.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'UserState.initial'));
   }
 
   @override
@@ -381,12 +558,18 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements Loading {
+class _$LoadingImpl with DiagnosticableTreeMixin implements Loading {
   const _$LoadingImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'UserState.loading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'UserState.loading'));
   }
 
   @override
@@ -512,7 +695,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements Success {
+class _$SuccessImpl with DiagnosticableTreeMixin implements Success {
   const _$SuccessImpl({required final List<User> users}) : _users = users;
 
   final List<User> _users;
@@ -524,8 +707,16 @@ class _$SuccessImpl implements Success {
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'UserState.success(users: $users)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'UserState.success'))
+      ..add(DiagnosticsProperty('users', users));
   }
 
   @override
@@ -670,15 +861,23 @@ class __$$FailedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailedImpl implements Failed {
+class _$FailedImpl with DiagnosticableTreeMixin implements Failed {
   const _$FailedImpl({required this.message});
 
   @override
   final String message;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'UserState.failed(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'UserState.failed'))
+      ..add(DiagnosticsProperty('message', message));
   }
 
   @override
