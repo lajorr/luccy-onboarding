@@ -4,16 +4,46 @@ part 'user.freezed.dart';
 part 'user.g.dart';
 
 @freezed
-class User with _$User {
-  const factory User({
+class UserResponse with _$UserResponse {
+  const factory UserResponse({
+    required int id,
     required String name,
     required String username,
     required String email,
     required String phone,
     required String website,
+    required Address address,
+    required Company company,
+  }) = _UserResponse;
+  factory UserResponse.fromJson(Map<String, Object?> json) =>
+      _$UserResponseFromJson(json);
+}
+
+@freezed
+class User with _$User {
+  const factory User({
+    required int id,
+    required String name,
+    required String username,
+    required String email,
+    required String phone,
+    required String website,
+    required String imgUrl,
+    required Address address,
+    required Company company,
   }) = _User;
 
-  factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
+  factory User.fromUserResponse(UserResponse res) => User(
+        id: res.id,
+        name: res.name,
+        username: res.username,
+        email: res.email,
+        phone: res.phone,
+        website: res.website,
+        imgUrl: 'https://i.pravatar.cc/150?img=${res.id}',
+        address: res.address,
+        company: res.company,
+      );
 }
 
 @freezed
@@ -23,21 +53,10 @@ class Address with _$Address {
     required String suite,
     required String city,
     required String zipcode,
-    required String geo,
   }) = _Address;
 
   factory Address.fromJson(Map<String, Object?> json) =>
       _$AddressFromJson(json);
-}
-
-@freezed
-class Geo with _$Geo {
-  const factory Geo({
-    required String lat,
-    required String lng,
-  }) = _Geo;
-
-  factory Geo.fromJson(Map<String, Object?> json) => _$GeoFromJson(json);
 }
 
 @freezed
@@ -48,5 +67,6 @@ class Company with _$Company {
     required String bs,
   }) = _Company;
 
-  factory Company.fromJson(Map<String, Object?> json) => _$CompanyFromJson(json);
+  factory Company.fromJson(Map<String, Object?> json) =>
+      _$CompanyFromJson(json);
 }

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luccy_onboarding/contants/color_constants.dart';
 
-class CircularContainer extends StatelessWidget {
-  const CircularContainer({
+class Avatar extends StatelessWidget {
+  const Avatar({
     super.key,
-    required this.child,
+    required this.imageUrl,
   });
 
-  final Widget child;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +16,17 @@ class CircularContainer extends StatelessWidget {
       height: 56.r,
       width: 56.r,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(50.r),
+        shape: BoxShape.circle,
         border: Border.all(
           color: ColorConstants.accentColor,
-          width: 3,
+          width: 3.0,
+        ),
+        image: DecorationImage(
+          image: NetworkImage(imageUrl),
+          fit: BoxFit.cover,
         ),
       ),
-      child: child,
+      // child: child,
     );
   }
 }

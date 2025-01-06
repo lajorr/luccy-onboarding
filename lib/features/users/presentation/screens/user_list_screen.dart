@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luccy_onboarding/contants/color_constants.dart';
+import 'package:luccy_onboarding/features/users/presentation/bloc/user_bloc.dart';
 import 'package:luccy_onboarding/features/users/presentation/widgets/appbar.dart';
-import 'package:luccy_onboarding/features/users/presentation/widgets/circular_container.dart';
+import 'package:luccy_onboarding/features/users/presentation/widgets/avatar.dart';
 
 class UserListScreen extends StatelessWidget {
   const UserListScreen({super.key});
@@ -11,6 +13,9 @@ class UserListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstants.bgColor,
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        context.read<UserBloc>().add(const GetUsersDataEvent());
+      }),
       body: Column(
         children: [
           const MyAppbar(),
@@ -22,8 +27,8 @@ class UserListScreen extends StatelessWidget {
             ),
             child: Row(
               children: [
-                const CircularContainer(
-                  child: Placeholder(),
+                const Avatar(
+                  imageUrl: "https://i.pravatar.cc/300",
                 ),
                 SizedBox(
                   width: 12.w,

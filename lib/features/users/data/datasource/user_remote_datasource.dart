@@ -5,7 +5,7 @@ import 'package:luccy_onboarding/core/error/exceptions.dart';
 import 'package:luccy_onboarding/features/users/domain/models/user.dart';
 
 sealed class UserRemoteDatasource {
-  Future<List<User>> getUsers();
+  Future<List<UserResponse>> getUsers();
 }
 
 class UserRemoteDatasourceImpl extends UserRemoteDatasource {
@@ -13,13 +13,14 @@ class UserRemoteDatasourceImpl extends UserRemoteDatasource {
 
   UserRemoteDatasourceImpl({required this.dio});
   @override
-  Future<List<User>> getUsers() async {
+  Future<List<UserResponse>> getUsers() async {
     final response = await dio.get<List<dynamic>>('/users');
     final responseData = List<Map<String, dynamic>>.from(response.data ?? []);
     if (responseData.isEmpty) {
       throw ServerException();
     }
-    final userData = responseData.map((data) => User.fromJson(data)).toList();
+    final userData =
+        responseData.map((data) => UserResponse.fromJson(data)).toList();
     log(userData.toString());
     return userData;
   }
