@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luccy_onboarding/features/users/presentation/bloc/user_bloc.dart';
 import 'package:luccy_onboarding/features/users/presentation/screens/user_list_screen.dart';
 import 'package:luccy_onboarding/injection_container.dart';
@@ -19,13 +20,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => sl<UserBloc>(),
-      child: MaterialApp(
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) => MaterialApp(
           title: 'Luccy Onboarding',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const UserListScreen()),
+          home: child,
+        ),
+        child: const UserListScreen(),
+      ),
     );
   }
 }
