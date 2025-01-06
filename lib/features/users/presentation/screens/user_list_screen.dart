@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:luccy_onboarding/features/media/presentation/screens/media_screen.dart';
 import 'package:luccy_onboarding/features/users/presentation/bloc/user_bloc.dart';
 import 'package:luccy_onboarding/features/users/presentation/widgets/appbar.dart';
 import 'package:luccy_onboarding/features/users/presentation/widgets/user_tile.dart';
@@ -25,15 +26,12 @@ class _UserListScreenState extends State<UserListScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // ImagePicker picker = ImagePicker();
-          // picker.pickImage(source: ImageSource.camera).then((value) {
-          //   if (value != null) {
-          //     log(value.toString());
-          //   }
-          // });
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const MediaScreen(),
+          ));
         },
         child: const Icon(
-          Icons.photo_camera,
+          Icons.call,
         ),
       ),
       body: SingleChildScrollView(

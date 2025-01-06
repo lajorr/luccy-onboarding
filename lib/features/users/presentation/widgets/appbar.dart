@@ -15,7 +15,7 @@ class MyAppbar extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: media.height * 0.16,
+          height: media.height * 0.18,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(20.r),

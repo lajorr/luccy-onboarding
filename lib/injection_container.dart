@@ -20,4 +20,7 @@ Future<void> init() async {
     ..registerLazySingleton<UserRemoteDatasource>(
         () => UserRemoteDatasourceImpl(dio: sl()))
     ..registerLazySingleton<Dio>(() => getDio());
+
+  // video cubit
+  // sl.registerFactory(() => VideoCubit());
 }

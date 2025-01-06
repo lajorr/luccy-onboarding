@@ -19,32 +19,38 @@ mixin _$Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverFailure,
+    required TResult Function() socketFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? serverFailure,
+    TResult? Function()? socketFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverFailure,
+    TResult Function()? socketFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ServerFailure value) serverFailure,
+    required TResult Function(SocketFailure value) socketFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ServerFailure value)? serverFailure,
+    TResult? Function(SocketFailure value)? socketFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServerFailure value)? serverFailure,
+    TResult Function(SocketFailure value)? socketFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -112,6 +118,7 @@ class _$ServerFailureImpl implements ServerFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverFailure,
+    required TResult Function() socketFailure,
   }) {
     return serverFailure();
   }
@@ -120,6 +127,7 @@ class _$ServerFailureImpl implements ServerFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? serverFailure,
+    TResult? Function()? socketFailure,
   }) {
     return serverFailure?.call();
   }
@@ -128,6 +136,7 @@ class _$ServerFailureImpl implements ServerFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverFailure,
+    TResult Function()? socketFailure,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -140,6 +149,7 @@ class _$ServerFailureImpl implements ServerFailure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ServerFailure value) serverFailure,
+    required TResult Function(SocketFailure value) socketFailure,
   }) {
     return serverFailure(this);
   }
@@ -148,6 +158,7 @@ class _$ServerFailureImpl implements ServerFailure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ServerFailure value)? serverFailure,
+    TResult? Function(SocketFailure value)? socketFailure,
   }) {
     return serverFailure?.call(this);
   }
@@ -156,6 +167,7 @@ class _$ServerFailureImpl implements ServerFailure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ServerFailure value)? serverFailure,
+    TResult Function(SocketFailure value)? socketFailure,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -167,4 +179,109 @@ class _$ServerFailureImpl implements ServerFailure {
 
 abstract class ServerFailure implements Failure {
   const factory ServerFailure() = _$ServerFailureImpl;
+}
+
+/// @nodoc
+abstract class _$$SocketFailureImplCopyWith<$Res> {
+  factory _$$SocketFailureImplCopyWith(
+          _$SocketFailureImpl value, $Res Function(_$SocketFailureImpl) then) =
+      __$$SocketFailureImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SocketFailureImplCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$SocketFailureImpl>
+    implements _$$SocketFailureImplCopyWith<$Res> {
+  __$$SocketFailureImplCopyWithImpl(
+      _$SocketFailureImpl _value, $Res Function(_$SocketFailureImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Failure
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SocketFailureImpl implements SocketFailure {
+  const _$SocketFailureImpl();
+
+  @override
+  String toString() {
+    return 'Failure.socketFailure()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SocketFailureImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverFailure,
+    required TResult Function() socketFailure,
+  }) {
+    return socketFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? serverFailure,
+    TResult? Function()? socketFailure,
+  }) {
+    return socketFailure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverFailure,
+    TResult Function()? socketFailure,
+    required TResult orElse(),
+  }) {
+    if (socketFailure != null) {
+      return socketFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerFailure value) serverFailure,
+    required TResult Function(SocketFailure value) socketFailure,
+  }) {
+    return socketFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ServerFailure value)? serverFailure,
+    TResult? Function(SocketFailure value)? socketFailure,
+  }) {
+    return socketFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerFailure value)? serverFailure,
+    TResult Function(SocketFailure value)? socketFailure,
+    required TResult orElse(),
+  }) {
+    if (socketFailure != null) {
+      return socketFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SocketFailure implements Failure {
+  const factory SocketFailure() = _$SocketFailureImpl;
 }
