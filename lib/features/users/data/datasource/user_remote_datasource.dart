@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:luccy_onboarding/core/exceptions.dart';
+import 'package:luccy_onboarding/core/error/exceptions.dart';
 import 'package:luccy_onboarding/dio_config/dio_client.dart';
 import 'package:luccy_onboarding/features/users/domain/models/user.dart';
 
