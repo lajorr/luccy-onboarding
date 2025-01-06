@@ -11,7 +11,7 @@ class MyAppbar extends StatelessWidget {
     final media = MediaQuery.of(context).size;
 
     return Container(
-      margin: EdgeInsets.only(bottom: 28.h),
+      // margin: EdgeInsets.only(bottom: 28.h),
       child: Stack(
         clipBehavior: Clip.none,
         children: [

@@ -4,91 +4,67 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luccy_onboarding/contants/color_constants.dart';
 import 'package:luccy_onboarding/features/users/presentation/bloc/user_bloc.dart';
 import 'package:luccy_onboarding/features/users/presentation/widgets/appbar.dart';
-import 'package:luccy_onboarding/features/users/presentation/widgets/avatar.dart';
+import 'package:luccy_onboarding/features/users/presentation/widgets/user_tile.dart';
 
-class UserListScreen extends StatelessWidget {
+class UserListScreen extends StatefulWidget {
   const UserListScreen({super.key});
+
+  @override
+  State<UserListScreen> createState() => _UserListScreenState();
+}
+
+class _UserListScreenState extends State<UserListScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<UserBloc>().add(const GetUsersDataEvent());
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstants.bgColor,
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        context.read<UserBloc>().add(const GetUsersDataEvent());
-      }),
       body: Column(
         children: [
           const MyAppbar(),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Row(
-              children: [
-                const Avatar(
-                  imageUrl: "https://i.pravatar.cc/300",
-                ),
-                SizedBox(
-                  width: 12.w,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "UserName",
-                      style: TextStyle(
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500,
-                        color: ColorConstants.primaryColor,
+          BlocBuilder<UserBloc, UserState>(
+            builder: (context, state) {
+              if (state is Loading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state is Failed) {
+                return Center(
+                  child: Text(
+                    state.message,
+                    style: const TextStyle(color: Colors.red),
+                  ),
+                );
+              } else if (state is Success) {
+                final users = state.users;
+                return Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12.w),
+                    child: ListView.builder(
+                      
+                      itemCount: users.length,
+                      itemBuilder: (context, index) => UserTile(
+                        email: users[index].email,
+                        phone: users[index].phone,
+                        username: users[index].username,
+                        imageUrl: users[index].imgUrl,
                       ),
                     ),
-                    const UserInfoTile(
-                      iconData: Icons.mail,
-                      info: "Emial",
-                    ),
-                    const UserInfoTile(
-                      iconData: Icons.call,
-                      info: "Phonee",
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                );
+              } else {
+                return const SizedBox();
+              }
+            },
           ),
         ],
       ),
-    );
-  }
-}
-
-class UserInfoTile extends StatelessWidget {
-  const UserInfoTile({
-    super.key,
-    required this.iconData,
-    required this.info,
-  });
-
-  final IconData iconData;
-  final String info;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(
-          iconData,
-          color: ColorConstants.accentColor,
-          size: 20.sp,
-        ),
-        SizedBox(
-          width: 8.w,
-        ),
-        Text(
-          info,
-        ),
-      ],
     );
   }
 }
