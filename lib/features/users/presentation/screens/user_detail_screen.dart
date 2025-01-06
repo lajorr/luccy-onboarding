@@ -71,7 +71,9 @@ class UserDetailScreen extends StatelessWidget {
                           ),
                           child: Text(
                             "User Information",
-                            style: TextStyle(fontSize: 16.sp, color: ColorConstants.primaryColor),
+                            style: TextStyle(
+                                fontSize: 16.sp,
+                                color: ColorConstants.primaryColor),
                           ),
                         ),
                         Divider(

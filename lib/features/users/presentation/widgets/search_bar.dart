@@ -20,7 +20,7 @@ class MySearchBar extends StatelessWidget {
           borderRadius: BorderRadius.circular(30.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: Colors.grey.shade400,
               spreadRadius: 2,
               blurRadius: 4,
               offset: const Offset(0, 3),

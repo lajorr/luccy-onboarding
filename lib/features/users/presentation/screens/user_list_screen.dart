@@ -23,6 +23,19 @@ class _UserListScreenState extends State<UserListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // ImagePicker picker = ImagePicker();
+          // picker.pickImage(source: ImageSource.camera).then((value) {
+          //   if (value != null) {
+          //     log(value.toString());
+          //   }
+          // });
+        },
+        child: const Icon(
+          Icons.photo_camera,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

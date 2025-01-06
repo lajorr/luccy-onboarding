@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:luccy_onboarding/core/error/failure.dart';
 import 'package:luccy_onboarding/features/users/data/datasource/user_remote_datasource.dart';
