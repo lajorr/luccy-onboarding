@@ -40,7 +40,7 @@ class User with _$User {
         email: res.email,
         phone: res.phone,
         website: res.website,
-        imgUrl: 'https://i.pravatar.cc/150?img=${res.id}',
+        imgUrl: 'https://i.pravatar.cc/300?img=${res.id}',
         address: res.address,
         company: res.company,
       );

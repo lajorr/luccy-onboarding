@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:luccy_onboarding/contants/color_constants.dart';
 import 'package:luccy_onboarding/features/users/presentation/bloc/user_bloc.dart';
 import 'package:luccy_onboarding/features/users/presentation/screens/user_list_screen.dart';
 import 'package:luccy_onboarding/injection_container.dart';
@@ -28,7 +29,11 @@ class MyApp extends StatelessWidget {
           title: 'Luccy Onboarding',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            scaffoldBackgroundColor: ColorConstants.bgColor,
             useMaterial3: true,
+            textTheme: TextTheme(
+              bodyMedium: TextStyle(color: ColorConstants.primaryColor),
+            ),
           ),
           home: child,
         ),

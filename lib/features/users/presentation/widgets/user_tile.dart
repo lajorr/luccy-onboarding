@@ -1,60 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luccy_onboarding/contants/color_constants.dart';
+import 'package:luccy_onboarding/features/users/domain/models/user.dart';
+import 'package:luccy_onboarding/features/users/presentation/screens/user_detail_screen.dart';
 import 'package:luccy_onboarding/features/users/presentation/widgets/avatar.dart';
 
 class UserTile extends StatelessWidget {
   const UserTile({
     super.key,
-    required this.username,
-    required this.email,
-    required this.phone,
-    required this.imageUrl,
+    required this.user,
   });
-  final String username;
-  final String email;
-  final String phone;
-  final String imageUrl;
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      margin: EdgeInsets.only(bottom: 8.h),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        children: [
-          Avatar(
-            imageUrl: imageUrl,
-          ),
-          SizedBox(
-            width: 12.w,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                username,
-                style: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w500,
-                  color: ColorConstants.primaryColor,
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+          return UserDetailScreen(
+            user: user,
+          );
+        }));
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        margin: EdgeInsets.only(bottom: 8.h),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Row(
+          children: [
+            Avatar(
+              imageUrl: user.imgUrl,
+            ),
+            SizedBox(
+              width: 12.w,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  user.username,
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                    color: ColorConstants.primaryColor,
+                  ),
                 ),
-              ),
-              UserInfoTile(
-                iconData: Icons.mail,
-                info: email,
-              ),
-              UserInfoTile(
-                iconData: Icons.call,
-                info: phone,
-              ),
-            ],
-          ),
-        ],
+                UserInfoTile(
+                  iconData: Icons.mail,
+                  info: user.email,
+                ),
+                UserInfoTile(
+                  iconData: Icons.call,
+                  info: user.phone,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

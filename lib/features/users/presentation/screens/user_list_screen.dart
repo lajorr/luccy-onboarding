@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:luccy_onboarding/contants/color_constants.dart';
 import 'package:luccy_onboarding/features/users/presentation/bloc/user_bloc.dart';
 import 'package:luccy_onboarding/features/users/presentation/widgets/appbar.dart';
 import 'package:luccy_onboarding/features/users/presentation/widgets/user_tile.dart';
@@ -24,7 +23,6 @@ class _UserListScreenState extends State<UserListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorConstants.bgColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -48,7 +46,7 @@ class _UserListScreenState extends State<UserListScreen> {
                   );
                 } else if (state is Success) {
                   final users = state.users;
-                  
+
                   return Padding(
                     padding: EdgeInsets.symmetric(horizontal: 12.w),
                     child: ListView.builder(
@@ -56,10 +54,7 @@ class _UserListScreenState extends State<UserListScreen> {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: users.length,
                       itemBuilder: (context, index) => UserTile(
-                        email: users[index].email,
-                        phone: users[index].phone,
-                        username: users[index].username,
-                        imageUrl: users[index].imgUrl,
+                        user: users[index],
                       ),
                     ),
                   );
