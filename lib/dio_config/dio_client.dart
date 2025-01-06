@@ -4,10 +4,13 @@ import 'package:dio/dio.dart';
 
 const baseUrl = 'https://jsonplaceholder.typicode.com/';
 
-final dio = Dio(BaseOptions(
-  baseUrl: baseUrl,
-))
-  ..interceptors.add(Logging());
+Dio getDio() {
+  final dio = Dio(BaseOptions(
+    baseUrl: baseUrl,
+  ))
+    ..interceptors.add(Logging());
+  return dio;
+}
 
 class Logging extends Interceptor {
   @override

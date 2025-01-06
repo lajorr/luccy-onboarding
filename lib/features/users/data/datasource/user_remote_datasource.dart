@@ -1,7 +1,7 @@
 import 'dart:developer';
 
+import 'package:dio/dio.dart';
 import 'package:luccy_onboarding/core/error/exceptions.dart';
-import 'package:luccy_onboarding/dio_config/dio_client.dart';
 import 'package:luccy_onboarding/features/users/domain/models/user.dart';
 
 sealed class UserRemoteDatasource {
@@ -9,6 +9,9 @@ sealed class UserRemoteDatasource {
 }
 
 class UserRemoteDatasourceImpl extends UserRemoteDatasource {
+  final Dio dio;
+
+  UserRemoteDatasourceImpl({required this.dio});
   @override
   Future<List<User>> getUsers() async {
     final response = await dio.get<List<dynamic>>('/users');
