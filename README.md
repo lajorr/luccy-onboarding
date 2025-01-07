@@ -1,6 +1,8 @@
+
 # luccy_onboarding
 
-A new Flutter project.
+A new Flutter project
+
 
 ## Flutter Version
 
@@ -15,10 +17,48 @@ Engine • revision cb4b5fff73
 
 Tools • Dart 3.6.0 • DevTools 2.40.2
 
-## Run
 
-flutter run
+## API Reference
 
-## Api
+#### Get all users
 
-Get: https://jsonplaceholder.typicode.com/users
+```http
+  GET https://jsonplaceholder.typicode.com/users/
+```
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/lajorr/luccy-onboarding
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install packages
+
+```bash
+  flutter pub get
+```
+
+Start the app
+
+```bash
+  flutter run
+```
+
+
+## UI Designs
+
+
+![List Page](https://github.com/lajorr/luccy-onboarding/raw/a8395beaa728cf84ac18b393cb60035d0d14a009/list_page.jpeg)
+
+
+![Detail Page](https://github.com/lajorr/luccy-onboarding/raw/main/detail_page.jpeg)
+
+
